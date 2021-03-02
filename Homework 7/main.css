@@ -1,0 +1,17 @@
+.myClass {
+    font-size: 40px;
+    color: lightgrey;
+    font-weight: bold;
+}
+
+.content{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 24px;
+    color:brown;
+}
+
+#myID{
+    font-size: 40px;
+    color: lightgrey;
+    font-weight: bold;
+}
