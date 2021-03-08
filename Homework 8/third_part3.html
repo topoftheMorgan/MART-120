@@ -21,58 +21,53 @@
             <h2>Your Contact Information</h2>
         </head>
 
-        <form>
-            <script>
-                function checkForm()
-                {
-                    var asw;
-                    asw=document.getElementById("fName").value;
-                    if(asw=="")
-                    {
+        
+        <script>
+             function checkForm()
+             {
+                var asw;
+                asw=document.getElementById("fName").value;
+                if(asw=="")                  
+                  {
                         window.alert("E-mail is a required feild");
                         document.getElementById("fName").style.borderColor = "red";
                         document.getElementById("fName").focus();
-                    }
-                    else
-                    {
-                        document.getElementById("fName").style.borderColor="";
-                    }
-                    var asw2;
-                    asw2=document.getElementById("lName").value;
-                    if(asw2=="")
-                    {
-                        window.alert("Name is a required feild");
-                        document.getElementById("lName").style.borderColor = "red";
-                        document.getElementById("lName").focus();
-                    }
-                    else
-                    {
-                        document.getElementById("lName").style.borderColor="";
-                    }
-                    var asw3;
-                    asw=document.getElementById("terms").value;
-                    if(asw3=="")
-                    {
-                        window.alert("Terms and Conditions is a required feild");
-                        document.getElementById("terms").style.borderColor = "red";
-                        document.getElementById("terms").focus();
-                    }
-                    else
-                    {
-                        document.getElementById("terms").style.borderColor="";
-                    }
                 }
-            </script>
-            E-mail: <input type="text" id="fName"><br>
-            Name: <input type="text" id="lName"><br>
-            <head>
-                <h2>Accept Terms and Conditions</h2>
-            </head>
-            <input type="checkbox" id="terms" value="terms">Yes<br>
-            <input type="checkbox" id="terms" value="terms">No<br>
-            <p>
-            </p>
-            <button id="mySubmit" onclick=checkForm();></button>Submit</button>
-         </form>
+                else
+                {
+                    document.getElementById("fName").style.borderColor="";
+                }
+                var asw2;
+                asw2=document.getElementById("lName").value;
+                if(asw2=="")
+                {
+                    window.alert("Name is a required feild");
+                    document.getElementById("lName").style.borderColor = "red";
+                    document.getElementById("lName").focus();
+                }
+                else
+                {
+                    document.getElementById("lName").style.borderColor="";
+                }
+                var asw3;
+                asw3=document.getElementById("chkTermsNo").checked;
+                if(asw3==false)
+                {
+                    window.alert("Terms and Conditions is a required feild");
+                }
+                else
+                {
+                    document.getElementById("terms").style.borderColor="";
+                }
+            }
+        </script>
+        E-mail: <input type="text" id="fName"><br>
+        Name: <input type="text" id="lName"><br>
+        <h2>Accept Terms and Conditions</h2>
+        <input type="checkbox" id="chkTermsYes" value="Yes">Yes<br>
+        <input type="checkbox" id="chkTermsNo" value="No">No<br>
+        <p>
+        </p>
+        <button id="mySubmit" onclick=checkForm();>Submit</button>
     </body>
 </html>
