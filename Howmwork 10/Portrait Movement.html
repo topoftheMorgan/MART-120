@@ -1,0 +1,94 @@
+<html>
+    <head> 
+        <title>p5.js page</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+        <script>
+            var amrsX = 250;
+            var armsY = 100;
+            var armsDirection = 1;
+
+            var legsX = 200;
+            var legsY = 185;
+            var legsDirection = 3;
+
+            var mouthX = 100;
+            var mouthY = 50;
+            var mouthDirection = 2;
+
+            var text = 22;
+            var count = 0;
+            var textDirection = 2;
+            function setup()
+            {
+                createCanvas(500, 600);
+            }
+
+            function draw()
+            {
+                background(120);
+                textSize(22)
+                text("Say What!", 190,80);
+                // head
+                fill(255);
+                circle(250,250,250);
+   
+                // eyes
+                strokeWeight(10);
+                fill(0);
+                point(200,230);
+                point(285,230);
+    
+                 // mouth
+                 ellipse(mouthX,250,45,30)
+                 mouthX += mouthDirection;
+                if(mouthX <= 0 || mouthX >= 450)
+                {
+                    mouthDirection *= -1;
+                }
+                mouthY += mouthDirection;
+                if(mouthY <= 0 || mouthY >= 450)
+                {
+                    mouthDirection *= -1;
+                }
+
+
+                // body
+                fill(148,39,79);
+                square(200,375,100);
+    
+                // hair
+                fill(101,70,48);
+                triangle(130,300,140,400,150,330)
+                triangle(330,350,375,400,370,300)
+                // right arm
+                fill(10, 24, 120);
+                rect(300,armsY,50,10);
+                // left arm
+                rect(150,armsY,50,10);
+                armsY += armsDirection;
+                if(armsY <= 0 || armsY >= 425)
+                {
+                    armsDirection *= -1;
+                }
+                // left leg
+                rect(legsX,475,10,75);
+                // right leg
+                rect(legsX,475,10,75);
+                legsX += legsDirection;
+                if(legsX <= 0 || legsX >= 450)
+                {
+                    legsDirection *= -1;
+                }
+    
+                fill(0);
+                textSize(20);
+                
+                text("Morgan Bowman(ish)",160,575 );
+            }
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
