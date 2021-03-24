@@ -8,6 +8,7 @@
             var armsDirection = 1;
 
             var legsX = 200;
+            var leglX = 290
             var legsY = 185;
             var legsDirection = 3;
 
@@ -15,9 +16,10 @@
             var mouthY = 50;
             var mouthDirection = 2;
 
-            var text = 22;
+            var size = 22;
             var count = 0;
-            var textDirection = 2;
+            var sizeDirection = 2;
+
             function setup()
             {
                 createCanvas(500, 600);
@@ -39,7 +41,7 @@
                 point(285,230);
     
                  // mouth
-                 ellipse(mouthX,250,45,30)
+                 ellipse(mouthX,mouthY,45,30)
                  mouthX += mouthDirection;
                 if(mouthX <= 0 || mouthX >= 450)
                 {
@@ -73,15 +75,27 @@
                 // left leg
                 rect(legsX,475,10,75);
                 // right leg
-                rect(legsX,475,10,75);
+                rect(leglX,475,10,75);
                 legsX += legsDirection;
                 if(legsX <= 0 || legsX >= 450)
                 {
                     legsDirection *= -1;
                 }
+                leglX += legsDirection;
+                if(leglX <= 0 || leglX >= 450)
+                {
+                    legsDirection *= -1;
+                }
     
                 fill(0);
-                textSize(20);
+                textSize(size);
+                size+= sizeDirection;
+                count++;
+                if(count > 5)
+                {
+                    sizeDirection *=-1;
+                    count = 0;
+                }
                 
                 text("Morgan Bowman(ish)",160,575 );
             }
