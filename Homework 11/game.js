@@ -1,82 +1,72 @@
-// x and y for my character
-var characterX = 100;
-var characterY = 100;
-// define the key codes for each letter
+var characterX = 30;
+var characterY = 25;
+// key codes
 var w = 87; 
 var s = 83;
 var a = 65;
 var d = 68;
 
-// x and y for a shape
-var shapeX = 30;
+//floater(small) 1
+var shapeX = 150;
 var shapeY = 50;
 var shapeXSpeed;
 var shapeYSpeed;
+//floater(medium) 2
+var shapeXX = 300;
+var shapeYY = 50;
+var shapeXXSpeed;
+var shapeYYSpeed;
+//floater(large) 3
+var shapeXXX = 0;
+var shapeYYY = 50;
+var shapeXXXSpeed;
+var shapeYYYSpeed;
 
-// create a shape when the mouse is clicked
+//click
 var mouseShapeX;
 var mouseShapeY;
 function setup()
 {
     createCanvas(500, 600);
-    // get a random speed when the it first starts
-    shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-    shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
 }
 
 function draw()
 {
-    background(120,45,78);
-    stroke(0);
-    fill(0);
-    // top border
-    rect(0,0,width,10);
-    // left border
-    rect(0,0,10,height);
-    // bottom border
-    rect(0, height-10,width, 10);
-    // right upper border
-    rect(width-10,0,10,height-50);
+    background(2, 128, 188);
 
-    // exit message
-    textSize(16);
-    text("EXIT", width-50,height-50)
-
-    //character
-    fill(23,40,123);
-    circle(characterX,characterY,25);
-
-    // handle the keys
+    //fish
+    fill(228, 123, 15);
+    ellipse(characterX,characterY,40,25);
+    
+    // move keys
     if(keyIsDown(w))
     {
-        characterY -= 10;   
+        characterY -= 5;   
     }
     if(keyIsDown(s))
     {
-        characterY += 10;   
+        characterY += 5;   
     }
     if(keyIsDown(a))
     {
-        characterX -= 10;   
+        characterX -= 5;   
     }
     if(keyIsDown(d))
     {
-        characterX += 10;   
+        characterX += 5;   
     }
 
-    // potential enemy
-    fill(13,145,14);
-    // draw the shape
-    circle(shapeX, shapeY, 10);
-
-     // get a random speed when the it first starts
-     shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-     shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-
-    // move the shape
+    //floaters
+    fill(61, 71, 75)
+    circle(shapeX, shapeY, 5);
+    fill(143, 111, 74)
+    circle(shapeXX, shapeYY, 10);
+    fill(51, 74, 53)
+    circle(shapeXXX, shapeYYY, 15);
+    shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
     shapeX += shapeXSpeed;
     shapeY += shapeYSpeed;
-    // check to see if the shape has gone out of bounds
     if(shapeX > width)
     {
         shapeX = 0;
@@ -93,8 +83,58 @@ function draw()
     {
         shapeY = height;
     }
+    shapeXXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    shapeYYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    shapeXX += shapeXXSpeed
+    shapeYY += shapeYYSpeed
+    if(shapeXX > width)
+    {
+        shapeXX = 0;
+    }
+    if(shapeXX < 0)
+    {
+        shapeXX = width;
+    }
+    if(shapeYY > height)
+    {
+        shapeYY = 0;
+    }
+    if(shapeYY < 0)
+    {
+        shapeYY = height;
+    }
+    shapeXXXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    shapeYYYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    shapeXXX += shapeXXXSpeed
+    shapeYYY += shapeYYYSpeed
+    if(shapeXXX > width)
+    {
+        shapeXXX = 0;
+    }
+    if(shapeXXX < 0)
+    {
+        shapeXXX = width;
+    }
+    if(shapeYYY > height)
+    {
+        shapeYYY = 0;
+    }
+    if(shapeYYY < 0)
+    {
+        shapeYYY = height;
+    }
+    
+    //outline
+    stroke(0);
+    fill(0, 111, 74);
+    rect(0,0,width,10);
+    rect(0,0,10,height);
+    rect(0, height-10,width, 10);
+    rect(width-10,0,10,height-50);
 
-    // check to see if the character has left the exit
+    fill(0)
+    textSize(16);
+    text("Finish", width-50,height-25)
     if(characterX > width && characterY > width-50)
     {
         fill(0);
@@ -103,29 +143,14 @@ function draw()
         text("You Win!", width/2-50, height/2-50);
     }
 
-    // create the shape based on the mouse click
     fill(120,130,140);
     circle(mouseShapeX, mouseShapeY, 25);
-}
 
-function mouseClicked()
-{
+    function mouseClicked()
+    {
     mouseShapeX = mouseX;
     mouseShapeY = mouseY;
+    }
 }
-/*
-function keyPressed() {
-    if (keyCode === LEFT_ARROW) {
-        characterX -= 10;
-    } 
-    else if (keyCode === RIGHT_ARROW) {
-        characterX += 10;
-    }
-    else if (keyCode === UP_ARROW) {
-        characterY -= 10;
-    }
-    else if (keyCode === DOWN_ARROW) {
-        characterY += 10;
-    }
-  }
-  */
+
+
