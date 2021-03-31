@@ -145,12 +145,11 @@ function draw()
 
     fill(120,130,140);
     circle(mouseShapeX, mouseShapeY, 25);
-
+    }
     function mouseClicked()
     {
     mouseShapeX = mouseX;
     mouseShapeY = mouseY;
-    }
 }
 
 
