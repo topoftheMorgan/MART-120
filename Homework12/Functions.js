@@ -34,6 +34,12 @@ function draw()
 {
     background(2, 128, 188);
 
+    createBorders(5);
+
+    characterMovement();
+    fill(228, 123, 15);
+    ellipse(characterX,characterY,40,25);
+
     //floaters
     fill(61, 71, 75)
     circle(shapeX, shapeY, 5);
@@ -101,6 +107,18 @@ function draw()
     {
         shapeYYY = height;
     }
+
+    fill(0)
+    textSize(16);
+    text("Finish", width-50,height-50)
+    if(characterX > width & characterY > width-50)
+    {
+        fill(0);
+        stroke(5);
+        textSize(26);
+        text("You Win!", width/2-50, height/2-50);
+    }
+
 }
 function characterMovement()
 {
@@ -122,8 +140,7 @@ function characterMovement()
         characterX += 5;   
     }
 }
-
-function draw()
+function drawCharacter()
 {
     //fish
     fill(228, 123, 15);
@@ -132,21 +149,22 @@ function draw()
 function createBorders(thickness)
 {
     //outline
-    stroke(0);
+    //stroke(0);
     fill(0, 111, 74);
 
     rect(0,0,width,thickness);
-    rect(0,0,thickness,height-50);
+    rect(0,0,thickness,height);
     rect(0, height-thickness,width, thickness);
-    rect(width-thickness,0,thickness,height);
+    rect(width-thickness,0,thickness,height-50);
 } 
-function createCircle(mouseShapeX, mouseShapeY, mouseX, mouseY)
+function createCircle()
 {  
     fill(120,130,140);
     circle(mouseShapeX, mouseShapeY, 25);
 }
 function mouseClicked()
 {
+    text("x: " + mouseShapeX + " y: " + mouseShapeY, mouseShapeX, mouseShapeY)
     mouseShapeX = mouseX;
     mouseShapeY = mouseY;
 }
