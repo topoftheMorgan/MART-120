@@ -47,8 +47,8 @@ function draw()
         ellipse(characterX,characterY,40,25);
 
         //floaters
-        fill(61, 71, 75)
-        circle(shapeX, shapeY, 20);
+        //fill(61, 71, 75)
+        //circle(shapeX, shapeY, 20);
         
         fill(0)
         textSize(16);
@@ -61,14 +61,15 @@ function draw()
             text("You Win!", width/2-50, height/2-50);
         }
         
-        fill(13, 145, 14);
+        fill(61, 71, 75);
         //floater
         for (var i = 0; i < shapeXs.length; i++) 
         {
             circle(shapeXs[i], shapeYs[i], diameters[i]);
             shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
             shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-    
+            diameters[i] = getRandomNumber(50);
+
             shapeXs[i] += shapeXSpeeds[i];
             shapeYs[i] += shapeYSpeeds[i];
             //bounderies
