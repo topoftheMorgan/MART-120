@@ -14,9 +14,9 @@ var shapeXs = [];
 var shapeYs = [];
 var diameters = [];
 
-var shapeXSpeed = [];
-var shapeYSpeed = [];
-var diameter = [];
+var shapeXSpeeds = [];
+var shapeYSpeeds = [];
+var diameters = [];
 
 
 //click
@@ -28,11 +28,10 @@ function setup()
 
         for (var i = 0; i < 50; i++) 
             {
-                shapeXSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-                shapeYSpeed[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-                shapeX[i] = getRandomNumber(350);
-                shapeY[i] = getRandomNumber(475);
-                diameter[i] = getRandomNumber(50);
+                shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+                shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+                shapeXs[i] = getRandomNumber(350);
+                shapeYs[i] = getRandomNumber(475);
             }
         createCharacter(200, 350);    
     }
@@ -43,18 +42,13 @@ function draw()
 
         createBorders(5);
 
-        //characterMovement();
-        //fill(228, 123, 15);
-        //ellipse(characterX,characterY,40,25);
+        characterMovement();
+        fill(228, 123, 15);
+        ellipse(characterX,characterY,40,25);
 
         //floaters
-        //fill(61, 71, 75)
-        //circle(shapeX, shapeY, 5);
-        //fill(143, 111, 74)
-        //circle(shapeXX, shapeYY, 10);
-        //fill(51, 74, 53)
-        //circle(shapeXXX, shapeYYY, 15);
-
+        fill(61, 71, 75)
+        circle(shapeX, shapeY, 20);
         
         fill(0)
         textSize(16);
@@ -68,30 +62,35 @@ function draw()
         }
         
         fill(13, 145, 14);
-    
+        //floater
         for (var i = 0; i < shapeXs.length; i++) 
         {
             circle(shapeXs[i], shapeYs[i], diameters[i]);
             shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
             shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-        }
     
-        shapeXs[i] += shapeXSpeeds[i];
-        shapeYs[i] += shapeYSpeeds[i];
-        //bounderies
-        if (shapeXs[i] > width) {
-            shapeXs[i] = 0;
-        }
-        if (shapeXs[i] < 0) {
-            shapeXs[i] = width;
-        }
-        if (shapeYs[i] > height) {
-            shapeYs[i] = 0;
-        }
-        if (shapeYs[i] < 0) {
-            shapeYs[i] = height;
+            shapeXs[i] += shapeXSpeeds[i];
+            shapeYs[i] += shapeYSpeeds[i];
+            //bounderies
+            if (shapeXs[i] > width) 
+            {
+                shapeXs[i] = 0;
+            }
+            if (shapeXs[i] < 0) 
+            {
+                shapeXs[i] = width;
+            }
+            if (shapeYs[i] > height) 
+            {
+                shapeYs[i] = 0;
+            }
+            if (shapeYs[i] < 0) 
+            {
+                shapeYs[i] = height;
+            }
         }
     }
+    
 function characterMovement()
     {
         // move keys
@@ -144,4 +143,8 @@ function mouseClicked()
         text("x: " + mouseShapeX + " y: " + mouseShapeY, mouseShapeX, mouseShapeY)
         mouseShapeX = mouseX;
         mouseShapeY = mouseY;
+    }
+    function getRandomNumber(number) 
+    {
+        return Math.floor(Math.random() * number) + 10;
     }
